@@ -35,8 +35,8 @@ export function ChatInterfaceComponent() {
 
   const handleSend = () => {
     if (input.trim()) {
-      const userMessage = { role: 'user', content: input }
-      const aiMessage = { role: 'ai', content: getAIResponse(input) }
+      const userMessage: Message = { role: 'user', content: input }
+      const aiMessage: Message = { role: 'ai', content: getAIResponse(input) }
       setMessages([...messages, userMessage, aiMessage])
       setInput('')
     }
