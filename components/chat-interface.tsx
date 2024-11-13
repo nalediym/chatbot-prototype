@@ -5,7 +5,7 @@ import { Send, Plus, X } from 'lucide-react'
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { ScrollArea } from "@/components/ui/scroll-area"
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogFooter } from "@/components/ui/dialog"
+import { Dialog, DialogContent, DialogTitle, DialogDescription, DialogHeader, DialogFooter } from "@/components/ui/dialog"
 import { Switch } from "@/components/ui/switch"
 import { Label } from "@/components/ui/label"
 
@@ -23,7 +23,7 @@ export default function ChatInterface() {
 
   const handleSend = async () => {
     if (input.trim()) {
-      const userMessage = { role: 'user', content: input }
+      const userMessage: Message = { role: 'user', content: input }
       setMessages([...messages, userMessage])
       setInput('')
 
@@ -41,11 +41,11 @@ export default function ChatInterface() {
         }
 
         const data = await response.json()
-        const aiMessage = { role: 'ai', content: data.response }
+        const aiMessage: Message = { role: 'ai', content: data.response }
         setMessages((prevMessages) => [...prevMessages, aiMessage])
       } catch (error) {
         console.error('Error:', error)
-        const errorMessage = { role: 'ai', content: 'Sorry, there was an error processing your request.' }
+        const errorMessage: Message = { role: 'ai', content: 'Sorry, there was an error processing your request.' }
         setMessages((prevMessages) => [...prevMessages, errorMessage])
       }
     }
