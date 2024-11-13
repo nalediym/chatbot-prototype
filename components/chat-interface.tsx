@@ -6,9 +6,9 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { ScrollArea } from "@/components/ui/scroll-area"
 
-interface Message {
-  role: 'user' | 'ai'
-  content: string
+type Message = {
+  role: 'user' | 'ai';
+  content: string;
 }
 
 const mockResponses: { [key: string]: string } = {
