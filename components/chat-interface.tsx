@@ -13,7 +13,7 @@ interface Message {
 
 const mockResponses: { [key: string]: string } = {
   "what is the name of our cohort?": "The name of our cohort is Women of Grace and Grit.",
-  "hello": "Hello! How can I assist you today?",
+  "hello!": "Hello! How can I assist you today?",
   "who are you?": "I'm an AI assistant created to help answer questions about the Women of Grace and Grit cohort.",
   "what is the purpose of this cohort?": "The Women of Grace and Grit cohort is designed to empower and support women in their personal and professional growth.",
   "when did the cohort start?": "The cohort started in early 2023. For the exact date, please check with the program coordinators.",
