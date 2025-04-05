@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Start Chat - Chereena</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+
+/* Base Reset */
+body, html {
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter', sans-serif;
+  background: #fff;
+  color: #333;
+}
+
+.app-container {
+  display: flex;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* Sidebar Styling */
+.sidebar {
+  width: 250px;
+  background-color: #f4f4f4;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.new-chat {
+  background-color: #fcb43a;
+  border: none;
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.sidebar-menu ul,
+.sidebar-footer ul {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0;
+}
+
+.sidebar-menu li,
+.sidebar-footer li {
+  margin: 0.75rem 0;
+}
+
+.sidebar-footer {
+  text-align: left;
+}
+
+.sidebar-footer .logo {
+  max-width: 150px;
+  margin-bottom: 1rem;
+}
+
+.icon {
+  margin-right: 0.5rem;
+}
+
+/* Main Content Styling */
+.chat-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.top-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.center-logo {
+  height: 24px;
+}
+
+.auth-buttons button {
+  background: #f1f1f1;
+  border: none;
+  margin-left: 0.5rem;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.profile-icon {
+  background: #1c1c3a;
+  color: white;
+  border-radius: 50%;
+  padding: 0.5rem;
+}
+
+.chat-area {
+  flex: 1;
+  overflow-y: auto;
+  padding: 2rem;
+  background-color: #ffffff;
+}
+
+.chat-input-area {
+  border-top: 1px solid #e0e0e0;
+  padding: 1rem 2rem;
+  background: #f9f9f9;
+}
+
+.chat-input-wrapper {
+  display: flex;
+  align-items: center;
+  background: white;
+  border: 1px solid #ccc;
+  border-radius: 25px;
+  padding: 0.5rem 1rem;
+}
+
+.chat-input-wrapper input {
+  border: none;
+  flex-grow: 1;
+  padding: 0.5rem;
+  font-size: 16px;
+  outline: none;
+}
+
+.icon-btn,
+.send-btn {
+  background: none;
+  border: none;
+  font-size: 18px;
+  margin: 0 0.5rem;
+  cursor: pointer;
+}
+
+.send-btn {
+  font-size: 20px;
+  color: #0d6efd;
+}
+
+.chat-disclaimer {
+  font-size: 12px;
+  color: #777;
+  margin-top: 0.5rem;
+  text-align: center;
+}
+
+.chat-disclaimer a {
+  color: #0d6efd;
+  text-decoration: none;
+}
+
+
+
+  </style>
+  <script defer src="script.js"></script>
+</head>
+<body>
+  <div class="app-container">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <button class="new-chat">New Chat</button>
+      <nav class="sidebar-menu">
+        <ul>
+          <li><a href="#">ITSMF Emerge Academy</a></li>
+        </ul>
+      </nav>
+      <div class="sidebar-footer">
+        <img src="/static/images/itsmf-logo.png" alt="ITSMF Logo" class="logo">
+        <ul>
+          <li><a href="#"><span class="icon">🗑️</span> Clear Conversations</a></li>
+          <li><a href="#"><span class="icon">🌙</span> Dark Mode</a></li>
+          <li><a href="#"><span class="icon">🔗</span> ITSMF Home</a></li>
+        </ul>
+      </div>
+    </aside>
+
+    <!-- Main Chat Area -->
+    <main class="chat-main">
+      <header class="top-nav">
+        <span class="chat-version">Chereena 2.0 ▼</span>
+        <img src="/static/images/itsmf-logo.png" alt="ITSMF Logo" class="center-logo">
+        <div class="auth-buttons">
+          <button class="login">Login</button>
+          <button class="signup">Sign Up</button>
+          <button class="profile-icon">👤</button>
+        </div>
+      </header>
+
+      <section class="chat-area" id="chatArea">
+        <!-- Chat messages will go here -->
+      </section>
+
+      <footer class="chat-input-area">
+        <div class="chat-input-wrapper">
+          <button class="icon-btn">🎤</button>
+          <button class="icon-btn">📎</button>
+          <input type="text" placeholder="Message Chereena" id="userInput">
+          <button class="send-btn" id="sendBtn">➤</button>
+        </div>
+        <p class="chat-disclaimer">
+          By messaging Chereena, you agree to our <a href="#">Terms</a> and have read our <a href="#">Privacy Policy</a>.
+        </p>
+      </footer>
+    </main>
+  </div>
+</body>
+</html>
