@@ -17,13 +17,16 @@ function typeText(element, text, speed = 10) {
 
   async function sendMessage() {
     const input = document.getElementById("userInput");
-    const chatLog = document.getElementById("chat-log");
+    const chatLog = document.getElementById("responseContainer");
+    // console.log(chatLog);
     const userText = input.value.trim();
+    console.log(userText);
   
     if (!userText) return;
   
     // Display user message
     const userMsg = document.createElement("div");
+    // console.log(userMsg);
     userMsg.className = "message user";
     userMsg.textContent = userText;
     chatLog.appendChild(userMsg);

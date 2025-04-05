@@ -1,7 +1,9 @@
 import os
 import requests
+import uvicorn
+
 from dotenv import load_dotenv
-from openai import OpenAI  # ✅ correct import for v1.69.0
+from openai import OpenAI
 from fastapi import FastAPI, Request
 from fastapi.staticfiles import StaticFiles
 from fastapi.responses import HTMLResponse
@@ -50,6 +52,7 @@ class MessageRequest(BaseModel):
 @app.post("/chat/")
 async def chat(request: MessageRequest):
     user_message = request.message
+    print(f"User message: {user_message}")
 
     system_prompt = f"""
 You are a helpful assistant that responds on behalf of the IT Senior Management Forum (ITSMF). 
@@ -78,5 +81,7 @@ Here are your instructions and knowledge base:
 # Home route to serve chatbot page
 @app.get("/", response_class=HTMLResponse)
 async def serve_home(request: Request):
-    #return templates.TemplateResponse("index.html", {"request": request})
     return templates.TemplateResponse("Cookies_Consent_Model.html", {"request": request})
+
+if __name__ == "__main__":
+    uvicorn.run(app, port=8000) 

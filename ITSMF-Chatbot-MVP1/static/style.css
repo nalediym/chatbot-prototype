@@ -1,29 +1,21 @@
-  .chat-log {
-    height: 400px;
-    overflow-y: auto;
-    scroll-behavior: smooth;
-    color: red;
-  }
+.chat-log {
+  height: 400px;
+  overflow-y: auto;
+  padding: 10px;
+  border: 1px solid #ddd;
+  background: #f9f9f9;
+  scroll-behavior: smooth;
+}
 
+.message.user {
+  text-align: right;
+  margin: 10px;
+  color: #0a58ca;
+  font-weight: bold;
+}
 
-  .chat-log {
-    height: 400px;
-    overflow-y: auto;
-    padding: 10px;
-    border: 1px solid #ddd;
-    background: #f9f9f9;
-    scroll-behavior: smooth;
-  }
-  
-  .message.user {
-    text-align: right;
-    margin: 10px;
-    color: #0a58ca;
-    font-weight: bold;
-  }
-  
-  .message.bot {
-    text-align: left;
-    margin: 10px;
-    color: #212529;
-  }
+.message.bot {
+  text-align: left;
+  margin: 10px;
+  color: #212529;
+}
