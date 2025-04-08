@@ -3,7 +3,7 @@ services:
     name: hello
     env: python
     buildCommand: "python -m pip install -r requirements.txt"
-    startCommand: "uvicorn app:app --host=0.0.0.0"
+    startCommand: "uvicorn main:app --host=0.0.0.0"
     repo: https://github.com/nalediym/chatbot-prototype.git
     region: oregon
     plan: free
