@@ -16,6 +16,7 @@ load_dotenv()
 
 # Validate API key is loaded
 api_key = os.getenv("OPENAI_API_KEY")
+port = os.getenv("PORT")
 if not api_key:
     raise RuntimeError("OPENAI_API_KEY is not set. Check your .env file.")
 
@@ -83,5 +84,3 @@ Here are your instructions and knowledge base:
 async def serve_home(request: Request):
     # return templates.TemplateResponse("Cookies_Consent_Model.html", {"request": request})
     return templates.TemplateResponse("new_chat.html", {"request": request})
-if __name__ == "__main__":
-    uvicorn.run(app, port=8000) 
