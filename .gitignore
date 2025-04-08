@@ -42,3 +42,4 @@ next-env.d.ts
 
 # API Key OpenAI API 
 **/.env/*
+**ITSMF-Chatbot-MVP1/.env
