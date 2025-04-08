@@ -38,3 +38,7 @@ next-env.d.ts
 
 # ChromaDB
 **/chroma_db/*
+
+
+# API Key OpenAI API 
+**/.env/*
