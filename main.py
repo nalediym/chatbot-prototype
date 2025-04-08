@@ -52,7 +52,6 @@ class MessageRequest(BaseModel):
 @app.post("/chat/")
 async def chat(request: MessageRequest):
     user_message = request.message
-    print(f"User message: {user_message}")
 
     system_prompt = f"""
 You are a helpful assistant that responds on behalf of the IT Senior Management Forum (ITSMF). 

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chat UI Mock</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="container">
+    <aside class="sidebar">
+      <button class="new-chat">🟧 New Chat</button>
+      <nav>
+        <ul>
+          <li>ITSMF Emerge Academy</li>
+        </ul>
+      </nav>
+      <div class="footer-links">
+        <a href="#">Clear Conversations</a>
+        <a href="#">Dark Mode</a>
+        <a href="#">ITSMF Home</a>
+      </div>
+    </aside>
+
+    <main class="chat-area">
+      <header class="chat-header">
+        <span class="model-name">Chereena 2.0 ⌄</span>
+        <img src="logo.png" alt="ITSMF Logo" class="logo" />
+        <div class="auth-buttons">
+          <button>Login</button>
+          <button>Sign Up</button>
+        </div>
+      </header>
+
+      <section class="chat-body" id="chatBody">
+        <!-- Messages will appear here -->
+      </section>
+
+      <footer class="chat-input">
+        <input type="text" placeholder="Message Chereena" id="messageInput" />
+        <button onclick="sendMessage()">➤</button>
+      </footer>
+    </main>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
