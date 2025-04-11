@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chat UI Mock</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    .container {
+      display: flex;
+      height: 100vh;
+    }
+
+    .sidebar {
+      width: 220px;
+      background: #f5f5f5;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .new-chat {
+      background: orange;
+      color: white;
+      border: none;
+      padding: 12px;
+      margin-bottom: 20px;
+      font-weight: bold;
+      cursor: pointer;
+      border-radius: 8px;
+    }
+
+    .sidebar nav ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .footer-links a {
+      display: block;
+      margin-top: 10px;
+      font-size: 0.9em;
+      color: #333;
+      text-decoration: none;
+    }
+
+    .chat-area {
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .chat-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 20px;
+      border-bottom: 1px solid #ccc;
+    }
+
+    .logo {
+      height: 25px;
+    }
+
+    .auth-buttons button {
+      margin-left: 10px;
+      padding: 6px 12px;
+    }
+
+    .chat-body {
+      flex-grow: 1;
+      background: #fff;
+      padding: 20px;
+      overflow-y: auto;
+    }
+
+    .chat-input {
+      display: flex;
+      padding: 12px;
+      border-top: 1px solid #ccc;
+    }
+
+    .chat-input input {
+      flex-grow: 1;
+      padding: 10px;
+      margin-right: 10px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+    }
+
+    .chat-input button {
+      padding: 10px;
+    }
+  </style>
+  <script>
+    // function sendMessage() {
+    //   console.log("sendMessage function called");
+    //   const input = document.getElementById("messageInput");
+    //   console.log("input: ", input);
+    //   const chatBody = document.getElementById("chatBody"); // this is the same as "responseContainer". see: /Users/naledi/Documents/Projects/chatbot-prototype/static/script.js
+    //   console.log("chatBody: ", chatBody);
+    //   const message = input.value.trim();
+    //   console.log("message: ", message);
+    //   if (message) {
+    //     const messageElem = document.createElement("div");
+    //     messageElem.textContent = message; // what dis do?
+        
+    //     chatBody.appendChild(messageElem);
+    //     input.value = "";
+    //     chatBody.scrollTop = chatBody.scrollHeight;
+    //   }
+    // }
+    function typeText(element, text, speed = 10) {
+    element.innerHTML = "";
+    let index = 0;
+  
+    function type() {
+      if (index < text.length) {
+        element.scrollIntoView({ behavior: 'smooth', block: 'end' });
+        element.innerHTML += text.charAt(index);
+        index++;
+        setTimeout(type, speed);
+      }
+    }
+  
+    type();
+  }
+    async function sendMessage() {
+    const input = document.getElementById("messageInput");
+    const chatLog = document.getElementById("chatBody");
+    // console.log(chatLog);
+    const userText = input.value.trim();
+    console.log(userText);
+  
+    if (!userText) return;
+  
+    // Display user message
+    const userMsg = document.createElement("div");
+    // console.log(userMsg);
+    userMsg.className = "message user";
+    userMsg.textContent = userText;
+    chatLog.appendChild(userMsg);
+  
+    input.value = "";
+  
+    // Placeholder for bot response
+    const botMsg = document.createElement("div");
+    botMsg.className = "message bot";
+    botMsg.textContent = "Thinking...";
+    chatLog.appendChild(botMsg);
+    chatLog.scrollTop = chatLog.scrollHeight;
+  
+    try {
+      // const res = await fetch("http://127.0.0.1:8000/chat/", {
+      //   method: "POST",
+      //   headers: { "Content-Type": "application/json" },
+      //   body: JSON.stringify({ message: userText })
+      // });
+
+      const res = await fetch("https://hello-voy1.onrender.com/chat/", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ message: userText })
+      });
+  
+      const data = await res.json();
+      botMsg.textContent = "";  // Clear placeholder
+  
+      if (data.response) {
+        typeText(botMsg, data.response);  // 👈 Typewriter here!
+      } else {
+        botMsg.textContent = "Oops! No response.";
+      }
+    } catch (err) {
+      botMsg.textContent = "Error: " + err.message;
+    }
+  
+    chatLog.scrollTop = chatLog.scrollHeight;
+  }
+
+  </script>
+</head>
+<body>
+  <div class="container">
+    <aside class="sidebar">
+      <button class="new-chat">🟧 New Chat</button>
+      <nav>
+        <ul>
+          <li>ITSMF Emerge Academy</li>
+        </ul>
+      </nav>
+      <div class="footer-links">
+        <a href="#">Clear Conversations</a>
+        <a href="#">Dark Mode</a>
+        <a href="#">ITSMF Home</a>
+      </div>
+    </aside>
+
+    <main class="chat-area">
+      <header class="chat-header">
+        <span class="model-name">Chereena 2.0 ⌄</span>
+        <span class="logo">itsmf</span>
+        <div class="auth-buttons">
+          <button>Login</button>
+          <button>Sign Up</button>
+        </div>
+      </header>
+
+      <section class="chat-body" id="chatBody">
+        <!-- Messages will appear here -->
+      </section>
+
+      <footer class="chat-input">
+        <input type="text" placeholder="Message Chereena" id="messageInput" />
+        <button onclick="sendMessage(); console.log('button clicked');">➤</button>
+      </footer>
+    </main>
+  </div>
+
+  
+</body>
+</html>
+

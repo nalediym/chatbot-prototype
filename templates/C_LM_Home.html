@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ITSMF Chatbot - Home</title>
+  <link rel="stylesheet" href="style.css" />
+  <script defer src="script.js"></script>
+</head>
+<body>
+  <div class="container">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <button class="new-chat">New Chat</button>
+      <nav>
+        <ul>
+          <li><a href="#">Clear Conversations</a></li>
+          <li><a href="#">Dark Mode</a></li>
+          <li><a href="#">ITSMF Home</a></li>
+        </ul>
+      </nav>
+      <div class="sidebar-logo">
+        <img src="/static/images/itsmf-logo.png" alt="ITSMF Logo" />
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main">
+      <header class="top-bar">
+        <div class="chat-version">Chereena 2.0 ▼</div>
+        <div class="auth-buttons">
+          <button>Login</button>
+          <button>Sign Up</button>
+        </div>
+      </header>
+
+      <section class="logo-center">
+        <img src="/static/images/itsmf-logo.png" alt="ITSMF Logo" height="24">
+      </section>
+
+      <section class="profile">
+        <img class="avatar" src="/static/images/chereena.png" alt="Chereena Avatar" />
+        <h2>ITSMF CHATBOT</h2>
+        <h1>Chereena</h1>
+        <p class="bio">Created by <a href="#">ITSMF EMERGE Academy: Women of Grace & Grit</a></p>
+        <p class="description">
+          Chereena is a RAG-powered chatbot that answers Information Technology Senior Management Forum (ITSMF)-related questions and inquiries.
+        </p>
+      </section>
+
+      <!-- Topic Sections -->
+      <section class="topics">
+        <div class="topic">
+          <h3>Academies</h3>
+          <div class="card">"What ITSMF programs are available for women?"</div>
+          <div class="card">"How much do the academies/programs at ITSMF cost?"</div>
+          <div class="card">"What’s the difference between the academies and other programs hosted by ITSMF?"</div>
+        </div>
+
+        <div class="topic">
+          <h3>Membership</h3>
+          <div class="card">"What are the different membership options?"</div>
+          <div class="card">"How frequent are membership dues and what do they go towards?"</div>
+          <div class="card">"Compare cost, eligibility, and benefits of the executive and associate pathway memberships."</div>
+        </div>
+
+        <div class="topic">
+          <h3>Symposiums</h3>
+          <div class="card">"What sponsorship opportunities exist and how do I apply to be a sponsor?"</div>
+          <div class="card">"What are the various ITSMF initiatives I can sponsor?"</div>
+          <div class="card">"Where is this year's ITSMF S2 2025 Symposium and when is the last day for registration?"</div>
+        </div>
+      </section>
+
+      <!-- Chat Input -->
+      <section class="chat-input">
+        <input type="text" placeholder="Message Chereena..." />
+        <button class="send-btn">➤</button>
+        <p class="legal">By messaging Chereena, you agree to our <a href="#">Terms</a> and have read our <a href="#">Privacy Policy</a>.</p>
+      </section>
+      <--<script src="../static/script.js"></script>-->
+      <--<script src="../static/style.css"></script>-->
+      <button onclick="sendMessage()">Send</button>
+    </main>
+  </div>
+</body>
+</html>

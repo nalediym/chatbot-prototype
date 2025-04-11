@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ITSMF Chatbot - Chereena</title>
+  <!-- <link rel="stylesheet" href="/static/style.css" /> -->
+  <!-- <script src="/static/script.js"></script> -->
+  <link rel="stylesheet" href="../static/style.css" />
+  <script src="../static/script.js"></script>
+  <link rel="stylesheet" href="../static/cookies_consent.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  
+</head>
+<body>
+  <div class="app-wrapper">
+    <aside>
+      <h4>ITSMF</h4>
+      <ul>
+        <li>Clear Conversations</li>
+        <li>Dark Mode</li>
+        <li>ITSMF Home</li>
+      </ul>
+    </aside>
+
+    <div class="main">
+      <div class="top-bar">
+        <button style="background:#ffba00;border:none;padding: 8px 14px;border-radius:6px;font-weight:bold;cursor:pointer;">New Chat</button>
+        <div>
+          <span style="margin-right: 1rem;">Chereena 2.0 ▼</span>
+          <button class="auth">Login</button>
+          <button class="auth">Sign Up</button>
+        </div>
+      </div>
+
+      <div class="profile">
+        <!-- <img src="https://placehold.co/64x64" alt="Chereena avatar" />
+        <img src="../static/images/Chereena Profile Picture Ai.png" alt="Chereena avatar" /> -->
+        <h1>Chereena</h1>
+        <span>ITSMF Chatbot · Created by ITSMF EMERGE Academy</span>
+        <p style="font-size: 13px; color: #666; max-width: 400px; margin: 0 auto;">
+          Chereena is a RAG-powered chatbot that answers Information Technology Senior Management Forum (ITSMF)-related questions and inquiries.
+        </p>
+      </div>
+
+      <div class="cards-section">
+        <div class="card-column">
+          <h3>Academies</h3>
+          <div class="card">What ITSMF programs are available for women?</div>
+          <div class="card">How much do the academies/programs at ITSMF cost?</div>
+          <div class="card">What's the difference between the academies and other programs hosted by ITSMF?</div>
+        </div>
+
+        <div class="card-column">
+          <h3>Membership</h3>
+          <div class="card">What are the different membership options?</div>
+          <div class="card">How frequent are membership dues and what do they go towards?</div>
+          <div class="card">Compare cost, eligibility, and benefits of the executive and associate pathways.</div>
+        </div>
+
+        <div class="card-column">
+          <h3>Symposiums</h3>
+          <div class="card">What sponsorship opportunities exist and how do I apply to be a sponsor?</div>
+          <div class="card">What are the various ITSMF initiatives I can be part of?</div>
+        </div>
+      </div>
+
+      <!-- <div class="message-box"> -->
+        <div class="input-container">
+          <input type="text" id="userInput" placeholder="Message Chereena..." />
+          <button id=button-send onclick="sendMessage()">Send</button>
+        <p style="font-size: 12px; color: #777;">By messaging Chereena, you agree to our <a href="#">Terms</a> and <a href="#">Privacy Policy</a>.</p>
+      </div>
+      <!-- <div class="input-container">
+        <input type="text" id="userInput" placeholder="Type your message here..." />
+        <button onclick="sendMessage()">Send</button>
+        </div> -->
+      
+        <div id="responseContainer" style="margin-top: 20px;"></div>
+    </div>
+  </div>
+
+  <div class="consent-banner">
+    <strong>🍪 Use Cookies</strong>
+    <p style="margin-top: 0.5rem;">
+      By clicking Accept All Cookies, you agree Information Technology Senior Management Forum can store cookies on your device.
+    </p>
+    <button class="accept">Accept All Cookies</button>
+    <button class="necessary">Necessary Cookies Only</button>
+    <button style="background:none;border:none;color:#0d6efd;padding:0;margin-top:0.5rem;">Customize Preferences</button>
+  </div>
+
+</body>
+</html>
