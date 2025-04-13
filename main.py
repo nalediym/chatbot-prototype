@@ -139,5 +139,5 @@ async def chat(request: MessageRequest):
 @app.get("/", response_class=HTMLResponse)
 async def serve_home(request: Request):
     # return templates.TemplateResponse("Cookies_Consent_Model.html", {"request": request})
-    # return templates.TemplateResponse("new_chat.html", {"request": request})
-    return templates.TemplateResponse("start_new_Chat.html", {"request": request})
+    return templates.TemplateResponse("new_chat.html", {"request": request})
+    # return templates.TemplateResponse("start_new_Chat.html", {"request": request})
