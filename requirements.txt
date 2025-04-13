@@ -5,3 +5,15 @@ openai
 jinja2
 requests
 httpx 
+langchain
+langchain-openai
+langchain-community
+langchain-core
+langchain-anthropic
+langchain-google-gemini
+langchain-huggingface
+langchain-llms
+langchain-text-splitters
+langchain-chroma
+langchain-pinecone
+langchain-groq
