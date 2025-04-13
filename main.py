@@ -10,15 +10,9 @@ from fastapi.responses import HTMLResponse
 from fastapi.templating import Jinja2Templates
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
-# from langchain.document_loaders import TextLoader
 from langchain_community.document_loaders import TextLoader
 from langchain.text_splitter import CharacterTextSplitter
-# from langchain.embeddings.openai import OpenAIEmbeddings
-# from langchain_community.embeddings import OpenAIEmbeddings
-# from langchain.vectorstores import Chroma
 from langchain_community.vectorstores import Chroma
-# from langchain.llms import OpenAI as LangChainOpenAI
-# from langchain_community.llms import OpenAI as LangChainOpenAI
 from langchain_openai import OpenAI as LangChainOpenAI
 from langchain_openai import OpenAIEmbeddings as OpenAIEmbeddings
 from langchain.chains import LLMChain, RetrievalQA
@@ -85,29 +79,6 @@ Question: {question}
 prompt = PromptTemplate(template=prompt_template, input_variables=["context", "question"])
 qa_chain = RetrievalQA.from_chain_type(llm=llm, chain_type="stuff", retriever=db.as_retriever(), return_source_documents=True, chain_type_kwargs={"prompt": prompt})
 
-# # 4. Run the RAG pipeline
-# query = "What is the main topic of the document?"
-# result = qa_chain({"query": query})
-
-# print(result["result"])
-# print(result["source_documents"])
-
-# Endpoint for handling chatbot messages
-# @app.post("/chat/")
-# async def chat(request: MessageRequest):
-#     user_message = request.message
-
-    # Load custom instructions from text file
-    # with open("itsmf_instructions.txt", "r") as file:
-    #     CUSTOM_INSTRUCTIONS = file.read()
-
-    # system_prompt = f"""
-    # You are a helpful assistant that responds on behalf of the IT Senior Management Forum (ITSMF). 
-    # Use only the tone and information aligned with ITSMF's mission, programs, and professional development content.
-    # Here are your instructions and knowledge base:
-
-    # # {CUSTOM_INSTRUCTIONS}
-    # # """
 @app.post("/chat/")
 async def chat(request: MessageRequest):
     user_message = request.message
