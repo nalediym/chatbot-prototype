@@ -50,14 +50,17 @@ function typeText(element, text, speed = 10) {
       const data = await res.json();
       botMsg.textContent = "";  // Clear placeholder
   
-      if (data.response) {
-        typeText(botMsg, data.response);  // 👈 Typewriter here!
-      } else {
+    //   if (data.response) {
+    //     typeText(botMsg, data.response);  // 👈 Typewriter here!
+    //   } else {
+    //     botMsg.textContent = "Oops! No response.";
+    //   }
+    // } catch (err) {
+    //   botMsg.textContent = "Error: " + err.message;
+    // }
+
+    if (data.answer) {
+      typeText(botMsg, data.answer);
+     } else {
         botMsg.textContent = "Oops! No response.";
-      }
-    } catch (err) {
-      botMsg.textContent = "Error: " + err.message;
     }
-  
-    chatLog.scrollTop = chatLog.scrollHeight;
-  }

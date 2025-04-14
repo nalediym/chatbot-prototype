@@ -3,85 +3,183 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ITSMF Chatbot - Home</title>
-  <link rel="stylesheet" href="style.css" />
-  <script defer src="script.js"></script>
+  <title>Chereena Chatbot</title>
+  <style>
+    body {
+      font-family: 'Helvetica Neue', sans-serif;
+      margin: 0;
+      background-color: #f9f9f9;
+      color: #333;
+      display: flex;
+    }
+    .sidebar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 200px;
+      height: 100vh;
+      background-color: #fff;
+      border-right: 1px solid #eee;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 1rem;
+    }
+    .new-chat {
+      background-color: #f4a261;
+      color: white;
+      border: none;
+      padding: 0.6rem 1rem;
+      font-size: 14px;
+      border-radius: 6px;
+      cursor: pointer;
+      margin-bottom: 1rem;
+    }
+    .sidebar-bottom a {
+      display: block;
+      margin-bottom: 1rem;
+      font-size: 14px;
+      color: #0077cc;
+      text-decoration: none;
+    }
+    .main {
+      margin-left: 200px;
+      width: calc(100% - 200px);
+    }
+    .header {
+      text-align: center;
+      padding: 2rem 1rem;
+    }
+    .header img {
+      border-radius: 50%;
+      width: 80px;
+      height: 80px;
+    }
+    .header h1 {
+      margin: 0.5rem 0 0.25rem;
+    }
+    .header p {
+      font-size: 0.9rem;
+      color: #666;
+    }
+    .section {
+      padding: 1rem;
+      display: flex;
+      gap: 2rem;
+      justify-content: center;
+    }
+    .column {
+      max-width: 250px;
+    }
+    .column h3 {
+      text-align: center;
+    }
+    .question {
+      background-color: #fff;
+      padding: 0.75rem;
+      margin-bottom: 0.5rem;
+      border-radius: 6px;
+      cursor: pointer;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+    .chatbar {
+      padding: 1rem;
+      border-top: 1px solid #ddd;
+      display: flex;
+      align-items: center;
+      background-color: #fff;
+    }
+    .chatbar input[type="text"] {
+      flex: 1;
+      padding: 0.75rem;
+      border: 1px solid #ccc;
+      border-radius: 20px;
+      margin: 0 0.5rem;
+    }
+    .chatbar button {
+      background-color: #0077cc;
+      color: white;
+      border: none;
+      padding: 0.6rem 1.25rem;
+      border-radius: 20px;
+      cursor: pointer;
+    }
+  </style>
 </head>
 <body>
-  <div class="container">
-    <!-- Sidebar -->
-    <aside class="sidebar">
-      <button class="new-chat">New Chat</button>
-      <nav>
-        <ul>
-          <li><a href="#">Clear Conversations</a></li>
-          <li><a href="#">Dark Mode</a></li>
-          <li><a href="#">ITSMF Home</a></li>
-        </ul>
-      </nav>
-      <div class="sidebar-logo">
-        <img src="/static/images/itsmf-logo.png" alt="ITSMF Logo" />
-      </div>
-    </aside>
-
-    <!-- Main Content -->
-    <main class="main">
-      <header class="top-bar">
-        <div class="chat-version">Chereena 2.0 ▼</div>
-        <div class="auth-buttons">
-          <button>Login</button>
-          <button>Sign Up</button>
-        </div>
-      </header>
-
-      <section class="logo-center">
-        <img src="/static/images/itsmf-logo.png" alt="ITSMF Logo" height="24">
-      </section>
-
-      <section class="profile">
-        <img class="avatar" src="/static/images/chereena.png" alt="Chereena Avatar" />
-        <h2>ITSMF CHATBOT</h2>
-        <h1>Chereena</h1>
-        <p class="bio">Created by <a href="#">ITSMF EMERGE Academy: Women of Grace & Grit</a></p>
-        <p class="description">
-          Chereena is a RAG-powered chatbot that answers Information Technology Senior Management Forum (ITSMF)-related questions and inquiries.
-        </p>
-      </section>
-
-      <!-- Topic Sections -->
-      <section class="topics">
-        <div class="topic">
-          <h3>Academies</h3>
-          <div class="card">"What ITSMF programs are available for women?"</div>
-          <div class="card">"How much do the academies/programs at ITSMF cost?"</div>
-          <div class="card">"What’s the difference between the academies and other programs hosted by ITSMF?"</div>
-        </div>
-
-        <div class="topic">
-          <h3>Membership</h3>
-          <div class="card">"What are the different membership options?"</div>
-          <div class="card">"How frequent are membership dues and what do they go towards?"</div>
-          <div class="card">"Compare cost, eligibility, and benefits of the executive and associate pathway memberships."</div>
-        </div>
-
-        <div class="topic">
-          <h3>Symposiums</h3>
-          <div class="card">"What sponsorship opportunities exist and how do I apply to be a sponsor?"</div>
-          <div class="card">"What are the various ITSMF initiatives I can sponsor?"</div>
-          <div class="card">"Where is this year's ITSMF S2 2025 Symposium and when is the last day for registration?"</div>
-        </div>
-      </section>
-
-      <!-- Chat Input -->
-      <section class="chat-input">
-        <input type="text" placeholder="Message Chereena..." />
-        <button class="send-btn">➤</button>
-        <p class="legal">By messaging Chereena, you agree to our <a href="#">Terms</a> and have read our <a href="#">Privacy Policy</a>.</p>
-      </section>
-      <--<script src="../static/script.js"></script>-->
-      <--<script src="../static/style.css"></script>-->
-      <button onclick="sendMessage()">Send</button>
-    </main>
+  <div class="sidebar">
+    <div>
+      <button class="new-chat">📝 New Chat</button>
+    </div>
+    <div class="sidebar-bottom">
+      <a href="#">Clear Conversations</a>
+      <a href="#">Dark Mode</a>
+      <a href="#">ITSMF Home</a>
+    </div>
   </div>
+
+  <div class="main">
+    <div class="header">
+      <img src="../static/images/Chereena Profile Picture Ai.png" alt="Chereena" />
+      <h1>ITSFM CHATBOT<br>Chereena</h1>
+      <p>Created by <a href="#">ITSMF</a> EMERGE Academy: Women of Grace & Grit</p>
+      <p>Chereena is a RAG-powered chatbot that answers Information Technology Senior Management Forum (ITSMF)-related questions and inquiries.</p>
+    </div>
+
+    <div class="section">
+      <div class="column">
+        <h3>📖 Academies</h3>
+        <div class="question">“What ITSMF programs are available for women?”</div>
+        <div class="question">“How much do the different ITSMF academies cost?”</div>
+        <div class="question">“What’s the difference between the academies and other programs hosted by ITSMF?”</div>
+      </div>
+      <div class="column">
+        <h3>📅 Membership</h3>
+        <div class="question">“What are the different membership options?”</div>
+        <div class="question">“How frequent are membership dues and what do they go towards?”</div>
+        <div class="question">“Compare cost, duration and benefits of the executive and the career pathway memberships.”</div>
+      </div>
+      <div class="column">
+        <h3>🌟 Symposiums</h3>
+        <div class="question">“What sponsorship opportunities exist and how do I apply to be a sponsor?”</div>
+        <div class="question">“What are the various ITSMF initiatives I can sponsor?”</div>
+        <div class="question">“Who do I contact about sponsoring?”</div>
+      </div>
+    </div>
+
+    </div>
+  </div>
+
+  <script>
+    async function sendMessage() {
+      const input = document.getElementById("chatInput");
+      const message = input.value;
+      if (!message) return;
+
+    //   const response = await fetch("/chat/", {
+    //     method: "POST",
+    //     headers: { "Content-Type": "application/json" },
+    //     body: JSON.stringify({ message })
+    //   });
+
+      const res = await fetch("https://hello-voy1.onrender.com/chat/", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ message })
+      });
+  
+
+      const data = await response.json();
+      alert("Chereena says: " + data.answer);
+      input.value = "";
+    }
+
+    document.querySelectorAll('.question').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.getElementById('chatInput').value = btn.textContent;
+        sendMessage();
+      });
+    });
+  </script>
 </body>
 </html>

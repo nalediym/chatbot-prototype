@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Upload Custom Data</title>
+  <style>
+    body { font-family: Arial, sans-serif; max-width: 600px; margin: auto; padding: 20px; }
+    label { font-weight: bold; margin-top: 10px; display: block; }
+    input, textarea { width: 100%; margin-bottom: 15px; padding: 8px; }
+    button { padding: 10px 20px; font-size: 16px; }
+    pre { background: #f5f5f5; padding: 10px; border-radius: 5px; }
+  </style>
+</head>
+<body>
+  <h1>Custom Data Loader</h1>
+  <form id="uploadForm" enctype="multipart/form-data">
+    <label for="namespace">Namespace</label>
+    <input type="text" name="namespace" id="namespace" required />
+
+    <label for="text">Custom Text</label>
+    <textarea name="text" id="text" rows="5" placeholder="Optional text input"></textarea>
+
+    <label for="url">Web Page URL</label>
+    <input type="url" name="url" id="url" placeholder="https://example.com" />
+
+    <label for="pdf_file">PDF File</label>
+    <input type="file" name="pdf_file" id="pdf_file" accept=".pdf" />
+
+    <label for="html_file">HTML File</label>
+    <input type="file" name="html_file" id="html_file" accept=".html,.htm" />
+
+    <button type="submit">Submit</button>
+  </form>
+
+  <h2>Response</h2>
+  <pre id="responseBox"></pre>
+
+  <script>
+    const form = document.getElementById("uploadForm");
+    const responseBox = document.getElementById("responseBox");
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const formData = new FormData(form);
+
+      const res = await fetch("http://localhost:8000/upload/", {
+        method: "POST",
+        body: formData
+      });
+
+      const data = await res.json();
+      responseBox.textContent = JSON.stringify(data, null, 2);
+    });
+  </script>
+</body>
+</html>
