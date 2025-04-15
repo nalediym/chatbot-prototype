@@ -11,13 +11,10 @@
       background-color: #f9f9f9;
       color: #333;
       display: flex;
+      height: 100vh;
     }
     .sidebar {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 200px;
-      height: 100vh;
+      width: 240px;
       background-color: #fff;
       border-right: 1px solid #eee;
       display: flex;
@@ -33,22 +30,43 @@
       font-size: 14px;
       border-radius: 6px;
       cursor: pointer;
-      margin-bottom: 1rem;
+    }
+    .sidebar-bottom {
+      margin-top: auto;
     }
     .sidebar-bottom a {
       display: block;
-      margin-bottom: 1rem;
+      margin-top: 1rem;
       font-size: 14px;
       color: #0077cc;
       text-decoration: none;
     }
     .main {
-      margin-left: 200px;
-      width: calc(100% - 200px);
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+    }
+    .topbar .logo {
+      font-size: 18px;
+      font-weight: bold;
+    }
+    .topbar .auth-buttons button {
+      margin-left: 10px;
+      padding: 0.5rem 1rem;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      background: white;
+      cursor: pointer;
     }
     .header {
       text-align: center;
-      padding: 2rem 1rem;
+      padding: 1rem 2rem;
     }
     .header img {
       border-radius: 50%;
@@ -57,6 +75,7 @@
     }
     .header h1 {
       margin: 0.5rem 0 0.25rem;
+      font-size: 24px;
     }
     .header p {
       font-size: 0.9rem;
@@ -65,11 +84,11 @@
     .section {
       padding: 1rem;
       display: flex;
-      gap: 2rem;
       justify-content: center;
+      gap: 3rem;
     }
     .column {
-      max-width: 250px;
+      max-width: 280px;
     }
     .column h3 {
       text-align: center;
@@ -81,20 +100,44 @@
       border-radius: 6px;
       cursor: pointer;
       box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+      font-size: 0.95rem;
+    }
+    .chat-window {
+      flex: 1;
+      background-color: #ffffff;
+      margin: 1rem 2rem;
+      padding: 1rem;
+      border-radius: 10px;
+      overflow-y: auto;
+      border: 1px solid #ddd;
+      max-height: 300px;
+    }
+    .message {
+      margin-bottom: 1rem;
+    }
+    .message.user {
+      text-align: right;
+      color: #0077cc;
+    }
+    .message.bot {
+      text-align: left;
+      color: #333;
     }
     .chatbar {
-      padding: 1rem;
-      border-top: 1px solid #ddd;
       display: flex;
       align-items: center;
+      padding: 1rem;
+      border-top: 1px solid #ddd;
       background-color: #fff;
+      justify-content: center;
+      gap: 1rem;
     }
     .chatbar input[type="text"] {
       flex: 1;
       padding: 0.75rem;
       border: 1px solid #ccc;
       border-radius: 20px;
-      margin: 0 0.5rem;
+      width: 60%;
     }
     .chatbar button {
       background-color: #0077cc;
@@ -104,82 +147,132 @@
       border-radius: 20px;
       cursor: pointer;
     }
+
+
+    /* Darkmode CSS */
+    body.dark-mode {
+  background-color: #0d0d25;
+  color: #fff;
+}
+
+.dark-mode .sidebar {
+  background-color: #151538;
+}
+
+.dark-mode .main {
+  background-color: #0d0d25;
+}
+
+.dark-mode .question {
+  background-color: #1e1e3f;
+  color: #fff;
+}
+
+.dark-mode .chatbar {
+  background-color: #151538;
+  border-top: 1px solid #333;
+}
+
+.dark-mode .chatbar input[type="text"] {
+  background-color: #222;
+  color: #fff;
+  border: 1px solid #555;
+}
+
+.dark-mode .chat-window {
+  background-color: #1e1e3f;
+  border-color: #333;
+}
+
+.dark-mode .topbar .auth-buttons button {
+  background-color: #222;
+  color: white;
+  border: 1px solid #666;
+}
+
+body.dark-mode .message.user,
+body.dark-mode .message.bot {
+  color: #ffffff;
+}
+
   </style>
 </head>
 <body>
   <div class="sidebar">
-    <div>
-      <button class="new-chat">📝 New Chat</button>
-    </div>
+    <button class="new-chat" onclick="window.location.href='/new_chat'">📝 New Chat</button>
     <div class="sidebar-bottom">
-      <a href="#">Clear Conversations</a>
-      <a href="#">Dark Mode</a>
-      <a href="#">ITSMF Home</a>
+      <a href="#" id="clearChat">Clear Conversations</a>
+      <a href="#" id="darkModeToggle">Dark Mode</a>
+      <a href="https://itsmfleaders.org/" target="_blank">ITSMF Home</a>
     </div>
   </div>
-
   <div class="main">
+    <div class="topbar">
+      <span class="logo">Chereena 2.0 ⌄</span>
+      <div class="auth-buttons">
+        <button>Login</button>
+        <button>Sign Up</button>
+      </div>
+    </div>
     <div class="header">
       <img src="../static/images/Chereena Profile Picture Ai.png" alt="Chereena" />
-      <h1>ITSFM CHATBOT<br>Chereena</h1>
+      <h1>ITSMF CHATBOT<br>Chereena</h1>
       <p>Created by <a href="#">ITSMF</a> EMERGE Academy: Women of Grace & Grit</p>
       <p>Chereena is a RAG-powered chatbot that answers Information Technology Senior Management Forum (ITSMF)-related questions and inquiries.</p>
     </div>
-
     <div class="section">
       <div class="column">
         <h3>📖 Academies</h3>
-        <div class="question">“What ITSMF programs are available for women?”</div>
-        <div class="question">“How much do the different ITSMF academies cost?”</div>
-        <div class="question">“What’s the difference between the academies and other programs hosted by ITSMF?”</div>
+        <div class="question">What ITSMF programs are available for women?</div>
+        <div class="question">How much do the different ITSMF academies cost?</div>
+        <div class="question">What’s the difference between the academies and other programs hosted by ITSMF?</div>
       </div>
       <div class="column">
         <h3>📅 Membership</h3>
-        <div class="question">“What are the different membership options?”</div>
-        <div class="question">“How frequent are membership dues and what do they go towards?”</div>
-        <div class="question">“Compare cost, duration and benefits of the executive and the career pathway memberships.”</div>
+        <div class="question">What are the different membership options?</div>
+        <div class="question">How frequent are membership dues and what do they go towards?</div>
+        <div class="question">Compare cost, duration and benefits of the executive and the career pathway memberships.</div>
       </div>
       <div class="column">
         <h3>🌟 Symposiums</h3>
-        <div class="question">“What sponsorship opportunities exist and how do I apply to be a sponsor?”</div>
-        <div class="question">“What are the various ITSMF initiatives I can sponsor?”</div>
-        <div class="question">“Who do I contact about sponsoring?”</div>
+        <div class="question">What sponsorship opportunities exist and how do I apply to be a sponsor?</div>
+        <div class="question">What are the various ITSMF initiatives I can sponsor?</div>
+        <div class="question">Who do I contact about sponsoring?</div>
       </div>
     </div>
-
+    <div class="chat-window" id="chatWindow"></div>
+    <div class="chatbar">
+      <input type="text" id="chatInput" placeholder="Message Chereena" />
+      <button onclick="sendMessage()">➤</button>
     </div>
   </div>
+<script src="/static/script.js"></script>
+<script>
+  function toggleDarkMode() {
+    const body = document.body;
+    const isDark = body.classList.toggle("dark-mode");
+    const link = document.getElementById("darkModeToggle");
+    link.textContent = isDark ? "Light Mode" : "Dark Mode";
+    localStorage.setItem("darkMode", isDark);
+  }
 
-  <script>
-    async function sendMessage() {
-      const input = document.getElementById("chatInput");
-      const message = input.value;
-      if (!message) return;
-
-    //   const response = await fetch("/chat/", {
-    //     method: "POST",
-    //     headers: { "Content-Type": "application/json" },
-    //     body: JSON.stringify({ message })
-    //   });
-
-      const res = await fetch("https://hello-voy1.onrender.com/chat/", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ message })
-      });
-  
-
-      const data = await response.json();
-      alert("Chereena says: " + data.answer);
-      input.value = "";
+  // Initialize from localStorage
+  window.addEventListener("DOMContentLoaded", () => {
+    const isDark = localStorage.getItem("darkMode") === "true";
+    if (isDark) {
+      document.body.classList.add("dark-mode");
+      const toggleLink = document.getElementById("darkModeToggle");
+      if (toggleLink) toggleLink.textContent = "Light Mode";
     }
 
-    document.querySelectorAll('.question').forEach(btn => {
-      btn.addEventListener('click', () => {
-        document.getElementById('chatInput').value = btn.textContent;
-        sendMessage();
+    const toggleLink = document.getElementById("darkModeToggle");
+    if (toggleLink) {
+      toggleLink.addEventListener("click", (e) => {
+        e.preventDefault();
+        toggleDarkMode();
       });
-    });
-  </script>
+    }
+  });
+</script>
 </body>
 </html>
